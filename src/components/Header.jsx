@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { AppContext } from "../utils/AppContext";
+import Menu from "./Menu/Menu";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
+  const {menuOpen, setMenuOpen} = useContext(AppContext);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -76,10 +77,8 @@ function Header() {
 
           {/* Mobile Navigation Button */}
           <div className="md:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
-              <div className="w-6 h-0.5 bg-gray-800 mb-1.5"></div>
-              <div className="w-6 h-0.5 bg-gray-800 mb-1.5"></div>
-              <div className="w-6 h-0.5 bg-gray-800"></div>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="">
+              <Menu/>              
             </button>
           </div>
         </div>
@@ -92,10 +91,11 @@ function Header() {
         >
           <NavLink
             to="/"
+            onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "block w-full text-center hover:bg-blue-50 px-4 py-2 text-blue-600 font-bold"
-                : "block w-full text-center hover:bg-blue-50 px-4 py-2 font-semibold text-blue-600"
+                ? "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 text-blue-600 font-bold "
+                : "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 font-semibold text-blue-600"
             }
           >
             Home
@@ -103,10 +103,11 @@ function Header() {
 
           <NavLink
             to="/services"
+            onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "block w-full text-center hover:bg-blue-50 px-4 py-2 text-blue-600 font-bold"
-                : "block w-full text-center hover:bg-blue-50 px-4 py-2 font-semibold text-blue-600"
+                ? "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 text-blue-600 font-bold "
+                : "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 font-semibold text-blue-600"
             }
           >
             Services
@@ -114,10 +115,11 @@ function Header() {
 
           <NavLink
             to="/portfolio"
+            onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "block w-full text-center hover:bg-blue-50 px-4 py-2 text-blue-600 font-bold"
-                : "block w-full text-center hover:bg-blue-50 px-4 py-2 font-semibold text-blue-600"
+                ? "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 text-blue-600 font-bold "
+                : "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 font-semibold text-blue-600"
             }
           >
             Portfolio
@@ -125,10 +127,11 @@ function Header() {
 
           <NavLink
             to="/contact"
+            onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "block w-full text-center hover:bg-blue-50 px-4 py-2 text-blue-600 font-bold"
-                : "block w-full text-center hover:bg-blue-50 px-4 py-2 font-semibold text-blue-600"
+                ? "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 text-blue-600 font-bold "
+                : "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 font-semibold text-blue-600"
             }
           >
             Contact

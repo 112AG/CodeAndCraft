@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -17,8 +18,27 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
     console.log('Form Data:', formData)
+    const serviceId = 'service_4tjmtdn';
+    const templateId = 'template_bq0sg6h';
+    const publicId = 'QyPpPAD_ftws17IbR';
+
+    const templeteParams = {
+      to_name: 'Code&Craft(C&C)',
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs.send(serviceId, templateId, templeteParams, publicId).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    );
+    
 
     setFormData({
       name: '',

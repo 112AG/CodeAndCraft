@@ -11,7 +11,7 @@ function Home() {
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="animate-fadeIn">
-            <h1 className="text-4xl  lg:text-5xl font-bold mb-4 leading-tight">
+            <h1 className="text-4xl pt-14 md:pt-3 lg:text-5xl font-bold mb-4 leading-tight">
               Crafting Digital <span className="text-blue-600">Excellence</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8">

@@ -1,7 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import emailjs from '@emailjs/browser';
 
 function Footer() {
+  const [subscriber, setSubscriber] = useState('');
+
+  function handleChange(e) {
+    setSubscriber(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    var templateParams = {
+      to_name: 'Code&Craft(C&C)',
+      from_name: subscriber
+    };
+    
+    emailjs.send('service_3scw56h', 'template_97s6bxq', templateParams, 'QyPpPAD_ftws17IbR').then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    );
+
+  }
   return (
     
     <footer className="bg-gray-800 text-white py-12">
@@ -33,16 +58,18 @@ function Footer() {
         <div>
           <h4 className="text-lg font-medium mb-4">Newsletter</h4>
           <p className="text-gray-400 mb-4">Subscribe to our newsletter for web development tips and updates.</p>
-          <div className="flex border-2 border-blue-600 rounded-[10px]">
+          <form onSubmit={handleSubmit} className="flex border-2 border-blue-600 rounded-[10px]">
             <input 
               type="email" 
+              onChange={handleChange}
               placeholder="Your email" 
               className="px-3 py-2 bg-gray-700 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full"
+              
             />
-            <Link className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition-colors">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition-colors">
               →
-            </Link>
-          </div>
+            </button>
+          </form>
         </div>
       </div>
       <div className="mt-12 pt-8 border-t border-gray-700 text-gray-400 text-center">
