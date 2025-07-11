@@ -2,14 +2,16 @@ import React from "react";
 import HomeImg from "../assets/codeandcraft-home.webp";
 import { Link } from "react-router-dom";
 import { services } from "../data/homeData";
+import { blogPosts } from "../data/homeData";
 import { projectImages } from "../data/homeData";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 function Home() {
   return (
     <section className="min-h-screen py-8 flex items-center px-4 flex-col gap-16 ">
       {/* Top Hero Section */}
-      <div className="mx-auto">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+      <div className="pt-12">
+        <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           <div className="animate-fadeIn">
             <h1 className="text-4xl pt-14 md:pt-3 lg:text-5xl font-bold mb-4 leading-tight">
               Crafting Digital <span className="text-blue-600">Excellence</span>
@@ -34,15 +36,24 @@ function Home() {
               </Link>
             </div>
           </div>
-          <div className="block">
-            <img
-              src={HomeImg}
-              alt="Web Development Illustration"
-              className="w-full h-auto rounded-lg shadow-lg animate-float"
+          <div className="flex justify-center animate-float">
+            <DotLottieReact
+              src="https://lottie.host/ab64ff42-fb64-457a-89c0-6145fabf922c/Z1Eqr3gLYX.lottie"
+              autoplay
+              loop
+              style={{
+                width: "100%",
+                maxWidth: 550,
+                height: "auto",
+                aspectRatio: "1/1",
+                objectFit: "contain",
+                display: "block",
+              }}
             />
           </div>
         </div>
       </div>
+
       {/* What We Do ? */}
       <div className="flex flex-col items-center mx-auto">
         <h2 className="text-4xl pt-14 md:pt-3 lg:text-5xl font-bold mb-4 leading-tight">
@@ -112,77 +123,92 @@ function Home() {
           </Link>
         </div>
       </div>
-            {/* Our Blogs */}
-<div className="flex flex-col items-center mx-auto w-full">
-  <h2 className="text-4xl pt-14 md:pt-3 lg:text-5xl font-bold mb-4 leading-tight">
-    Blogs
-  </h2>
-  <p className="text-lg text-gray-600 mb-8 text-center ">
-    <span className="text-blue-600 text-[20px]">
-      Explore Insights, Tips & Updates
-    </span>
-    <br />
-    Stay ahead with our latest blog posts on web design, development, digital marketing, and tech trends. We share practical guides, industry updates, and expert advice to help your business grow online.
-  </p>
-  <div className="flex flex-col items-center gap-8">
-    <div className="flex flex-wrap justify-center gap-6 mt-4">
-      {/* Blog Cards / Articles */}
-    </div>
-    <Link
-      to="/blogs"
-      className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all active:scale-95 focus:scale-95"
-    >
-      View All Blogs
-    </Link>
-  </div>
-</div>
+      {/* Our Blogs */}
+      <div className="flex flex-col items-center mx-auto w-full">
+        <h2 className="text-4xl pt-14 md:pt-3 lg:text-5xl font-bold mb-4 leading-tight">
+          Blogs
+        </h2>
+        <p className="text-lg text-gray-600 mb-8 text-center ">
+          <span className="text-blue-600 text-[20px]">
+            Explore Insights, Tips & Updates
+          </span>
+          <br />
+          Stay ahead with our latest blog posts on web design, development,
+          digital marketing, and tech trends. We share practical guides,
+          industry updates, and expert advice to help your business grow online.
+        </p>
+        <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-wrap justify-center gap-6 mt-4">
+            {blogPosts.map((post) => (
+              <div
+                key={post}
+                className="bg-white w-full hover:scale-105 transition ease-in  sm:w-[334px] rounded-lg shadow-md p-2 flex flex-col items-center"
+              >
+                <img
+                  src={post.image}
+                  alt={post.heading}
+                  className="w-full h-40 object-cover rounded mb-3"
+                />
+                <span className="text-gray-700 font-medium capitalize">
+                  {post.heading}
+                </span>
+              </div>
+            ))}
+          </div>
+          <Link
+            to="/blogs"
+            className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all active:scale-95 focus:scale-95"
+          >
+            View All Blogs
+          </Link>
+        </div>
+      </div>
 
       {/* CTA */}
       <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 py-8 sm:py-20 rounded-2xl sm:rounded-3xl text-center px-4">
-  <h4 className="text-3xl md:text-5xl font-bold text-white mb-4">Ready to Elevate Your Online Presence?</h4>
-  <h2 className="text-gray-200 uppercase tracking-widest text-sm mb-6">
-    Let’s turn your vision into a powerful digital experience.
-  </h2>
-  <button className="border-2 cursor-pointer border-white text-white px-6 py-3 rounded-lg font-medium hover:text-blue-600 hover:bg-blue-50 transition-all active:scale-95 focus:scale-95">
-    Start Now
-  </button>
-</section>
+        <h4 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          Ready to Elevate Your Online Presence?
+        </h4>
+        <h2 className="text-gray-200 uppercase tracking-widest text-sm mb-6">
+          Let’s turn your vision into a powerful digital experience.
+        </h2>
+        <button className="border-2 cursor-pointer border-white text-white px-6 py-3 rounded-lg font-medium hover:text-blue-600 hover:bg-blue-50 transition-all active:scale-95 focus:scale-95">
+          Start Now
+        </button>
+      </section>
 
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-<style jsx>{`
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 1s ease-out;
-  }
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-`}</style>
-
+        .animate-fadeIn {
+          animation: fadeIn 1s ease-out;
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }
 
 export default Home;
-
