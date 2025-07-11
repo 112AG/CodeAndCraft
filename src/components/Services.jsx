@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Services() {
   const services = [
@@ -7,18 +8,21 @@ function Services() {
       icon: "✏️",
       description:
         "Creative and intuitive designs that capture your brand essence while ensuring a smooth user experience.",
+      link: "/web-design"
     },
     {
       title: "Web Development",
       icon: "💻",
       description:
         "Custom web applications built with modern technologies like React, Node.js, and more.",
+        link: "web-development"
     },
     {
       title: "Maintenance & Support",
       icon: "🔧",
       description:
         "Ongoing support to keep your website secure, up-to-date, and performing optimally.",
+        link: "/maintenance"
     },
   ];
   return (
@@ -36,14 +40,14 @@ function Services() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
+            <Link to={service.link}
               key={index}
               className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-4xl mb-4">{service.icon}</div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
 
