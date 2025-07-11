@@ -1,10 +1,10 @@
 import React from "react";
-import HomeImg from "../assets/codeandcraft-home.webp";
 import { Link } from "react-router-dom";
-import { services } from "../data/homeData";
-import { blogPosts } from "../data/homeData";
-import { projectImages } from "../data/homeData";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import WhatweDo from "../componentsTwo/WhatweDo";
+import ClientsProjects from "../componentsTwo/ClientsProjects";
+import Blog from "../componentsTwo/Blog";
+import CTA from "../componentsTwo/CTA";
 
 function Home() {
   return (
@@ -62,26 +62,7 @@ function Home() {
         <p className="text-lg text-gray-600 mb-8">
           We provide smart digital services to help your business grow.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-          {services.map((service, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-gray-100 rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-xl hover:scale-105 transition-all"
-            >
-              <div className="h-16 w-16 mb-3 flex items-center justify-center bg-gray-50 rounded-full shadow shadow-gray-600 overflow-hidden">
-                <img
-                  src={service.icon}
-                  alt={service.title + " icon"}
-                  className="h-10 w-10 object-contain"
-                />
-              </div>
-              <h3 className="text-xl text-blue-600 font-semibold mb-2">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 text-center">{service.description}</p>
-            </div>
-          ))}
-        </div>
+        <WhatweDo/>
       </div>
       {/* Here's clients project */}
       <div className="flex flex-col items-center mx-auto">
@@ -100,28 +81,7 @@ function Home() {
           reflect our commitment to functionality, creativity, and user-focused
           design.
         </p>
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex flex-wrap justify-center gap-6 mt-4">
-            {Object.entries(projectImages).map(([key, img]) => (
-              <div
-                key={key}
-                className="bg-white w-full hover:scale-105 transition ease-in  sm:w-[334px] rounded-lg shadow-md p-2 flex flex-col items-center"
-              >
-                <img
-                  src={img}
-                  alt={key + " project"}
-                  className="w-full h-40 object-cover rounded mb-3"
-                />
-                <span className="text-gray-700 font-medium capitalize">
-                  {key.replace(/([A-Z])/g, " $1")}
-                </span>
-              </div>
-            ))}
-          </div>
-          <Link className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all active:scale-95 focus:scale-95">
-            View All Portfolios
-          </Link>
-        </div>
+        <ClientsProjects/>
       </div>
       {/* Our Blogs */}
       <div className="flex flex-col items-center mx-auto w-full">
@@ -137,45 +97,11 @@ function Home() {
           digital marketing, and tech trends. We share practical guides,
           industry updates, and expert advice to help your business grow online.
         </p>
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex flex-wrap justify-center gap-6 mt-4">
-            {blogPosts.map((post) => (
-              <div
-                key={post}
-                className="bg-white w-full hover:scale-105 transition ease-in  sm:w-[334px] rounded-lg shadow-md p-2 flex flex-col items-center"
-              >
-                <img
-                  src={post.image}
-                  alt={post.heading}
-                  className="w-full h-40 object-cover rounded mb-3"
-                />
-                <span className="text-gray-700 font-medium capitalize">
-                  {post.heading}
-                </span>
-              </div>
-            ))}
-          </div>
-          <Link
-            to="/blogs"
-            className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all active:scale-95 focus:scale-95"
-          >
-            View All Blogs
-          </Link>
-        </div>
+        <Blog/>
       </div>
 
       {/* CTA */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 py-8 sm:py-20 rounded-2xl sm:rounded-3xl text-center px-4">
-        <h4 className="text-3xl md:text-5xl font-bold text-white mb-4">
-          Ready to Elevate Your Online Presence?
-        </h4>
-        <h2 className="text-gray-200 uppercase tracking-widest text-sm mb-6">
-          Let’s turn your vision into a powerful digital experience.
-        </h2>
-        <button className="border-2 cursor-pointer border-white text-white px-6 py-3 rounded-lg font-medium hover:text-blue-600 hover:bg-blue-50 transition-all active:scale-95 focus:scale-95">
-          Start Now
-        </button>
-      </section>
+      <CTA/>
 
       <style jsx>{`
         @keyframes fadeIn {

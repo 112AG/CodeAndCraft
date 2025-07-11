@@ -132,11 +132,11 @@ At C&C, we craft smart digital solutions to help your business grow online. From
               </li>
               <li>
                 <Link
-                  to="/portfolio"
-                  onClick={() => setActiveSection("portfolio")}
+                  to="/projects"
+                  onClick={() => setActiveSection("Projects")}
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Portfolio
+                  Projects
                 </Link>
               </li>
               <li>

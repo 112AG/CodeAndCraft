@@ -17,7 +17,7 @@ function Header() {
   return (
     <div>
       <nav
-        className={`fixed w-full py-4 z-50 transition-all duration-300 ${
+        className={`fixed w-full py-6 z-50 transition-all duration-300 ${
           scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
         }`}
       >
@@ -53,14 +53,14 @@ function Header() {
             </NavLink>
 
             <NavLink
-              to="/portfolio"
+              to="/projects"
               className={({ isActive }) =>
                 isActive
                   ? "text-blue-800 font-semibold btn-border"
                   : "btn-border"
               }
             >
-              Portfolio
+              Projects
             </NavLink>
 
             <NavLink
@@ -114,7 +114,7 @@ function Header() {
           </NavLink>
 
           <NavLink
-            to="/portfolio"
+            to="/projects"
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
@@ -122,7 +122,7 @@ function Header() {
                 : "block w-full text-center hover:bg-blue-500 hover:text-white transition ease-in-out px-4 py-2 font-semibold text-blue-600"
             }
           >
-            Portfolio
+            Projects
           </NavLink>
 
           <NavLink
